@@ -67,10 +67,10 @@ alert (Number("   true "))    // NaN
 
 ### 3. Boolean Conversion
 
-| Input                                                                                          | Output |
-| ---------------------------------------------------------------------------------------------- | ------ |
-|`0`, `''`, `null`, `undefined`, and `NaN` | false  |
-| everything else                                                                                           | true       |
+| Input                                     | Output |
+| ----------------------------------------- | ------ |
+| `0`, `''`, `null`, `undefined`, and `NaN` | false  |
+| everything else                           | true   |
 
 Sample Code:
 ```javascript

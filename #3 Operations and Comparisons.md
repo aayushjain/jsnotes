@@ -29,6 +29,7 @@ alert(str) // "my string"
 ```
 
 - unary plus operators are applied first
+(also converts string with numbers to Number DataType)
 ```js
 let a = "2", b = "3";
 alert (+a + +b); // 5
@@ -141,3 +142,63 @@ alert( undefined == 0 );    // false
 alert( undefined == null);  // true
 ```
 
+------------------
+------------------
+
+### Logical Operators
+
+#### 1. OR `||`
+
+- converts operands to bools, then checks for the first 'true' from LTR.
+    - If true, then returns operand.
+    - If all false, then return last operand.
+```js
+alert( null || 0 || 1 );        // 1
+alert(undefined || null || 0);  // 0
+```
+
+- form of `if`. If one is false, then check if next is true.
+
+- can be used to find first variable containing data, when others are empty.
+```js
+let defaultUser = undefined;
+alert(null || defaultUser || "user"); // user
+```
+
+#### 2. AND `&&`
+
+- works similarly as `||`. But checks for first falsy value instead. 
+    - Returns last operand, if all true.
+```js
+result = value1 && value2 && value3
+// result = value3
+// (as long as value1&2 are not 0)
+
+result = 1 && 2 && 3    // 3
+
+alert( 1 && 5 );        // 5
+
+alert( 1 && 2 && null && 3 ); // null
+```
+
+#### 3. NOT `!`
+
+- converts oper to bool, and returns inverse of bool
+```js
+alert(!0);  // true
+```
+
+- double NOT `!!` can be used to convert oper to bool
+operator ->  inverse bool -> bool
+```js
+alert( !!null );        // false
+// is the same as..
+alert( Boolean(null) ); // false
+```
+
+> ##### Priority Order
+> `!` >> `&&` >> `||`
+> 
+> ```javascript
+> alert( !!null || 2 && 3 || 4 );   // 3
+> ```
