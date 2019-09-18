@@ -102,4 +102,77 @@ user = {         // error
 };
 ```
 
+- copy properties from one obj to another (**clone**)
+```js
+let user = {
+    name: "John",
+    age: 30
+    };
 
+let clone = {};         // new empty object
+
+for (let key in user) {
+    clone[key] = user[key];
+}       // copy properties
+
+clone.name = "Pete"; // changed data in clone
+
+alert( user.name ); // John in original object
+                    // copied value, not reference
+                    
+// But this method will fail if one property
+// contains nested properties, as those will
+// be copied by reference. Not value.
+```
+
+- use `Object.assign` for simple cloing _(preferred method)_
+```js
+let clone = Object.assign({}, user);
+// copies all props of user into empty object and returns it
+```
+
+- Preferably, we should use the cloning loop that examines each value of `user[key]`, and
+    - if it’s an object, then replicate its structure as well. That is called “_deep cloning_”.
+- Or use the method `_.cloneDeep(obj)` from Lodash library in JS.
+
+---
+---
+
+### Garbage Collection
+
+- happens automatically when objects are unreachable (not being referenced ny any other var).
+You cannot initiate or abort GC manually.
+
+- a pack of interlinked objects can become unreachable as a whole; and will thus be destroyed by the GC.
+    - removing all incoming refs make an obj unreachable.
+    - only incoming references make an object reachable. outgoing refs don't matter.
+- objects referencing each other, but isolated together from the _root_ make the whole "island" of objects => unreachable.
+
+```javascript
+let user = {
+    name: "John"
+};
+
+let admin = user;
+alert(admin.name);  // John
+admin.name = "Wick"
+
+alert(user.name);   // Wick
+
+user = null;    // GC is not fired here,
+                // coz admin is still referring to that obj
+
+alert(admin.name);  // Wick
+alert(user.name);   // TypeError, user is null
+```
+
+### Algorithm  
+###### Mark and Sweep
+
+1. "Mark"/Remember all roots @ global
+2. Visit each root, and mark all outgoing refs from them.
+3. Visit each ref, and mark their refs sp as not to revisit them again.
+4. Continue until all objects are reachable from the root.
+5. Unmarked objects are removed.
+
+`Suggested Reading:` [A tour of V8: Garbage Collection](http://jayconrod.com/posts/55/a-tour-of-v8-garbage-collection).
