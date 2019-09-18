@@ -1,8 +1,8 @@
-# #3  Operations and Comparisons
+# #3 Operations and Comparisons
 
 > For complete operator precedence guide, check out [this table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table).
 > 
->summary: `()` > `post++` > `--pre` > `!` > `**` > `*, /,  %` > `+, -` > `<<, >>` > `<, <=, >, >=, in` > `==, !=, ===, !== ` > `&&` > `||` > `?:` > `=, +=, *=` > `,`
+>summary: `()` **>** `post++` **>** `--pre` **>** `!` **>** `**` **>** `*, /,  %` **>** `+, -` **>** `<<, >>` **>** `<, <=, >, >=, in` **>** `==, !=, ===, !== ` **>** `&&` **>** `||` **>** `?:` **>** `=, +=, *=` **>** `,`
  
 ### Operators
 
