@@ -1,6 +1,6 @@
 # #6 Objects
 
-- collection of properties defined as a `key:value` pair, and declared by `{...}`, called an object literal.
+>collection of properties defined as a `key:value` pair, and declared by `{...}`, called an object literal.
 ```javascript
 let user = {
   name          : "John",
@@ -134,6 +134,75 @@ let clone = Object.assign({}, user);
 - Preferably, we should use the cloning loop that examines each value of `user[key]`, and
     - if it’s an object, then replicate its structure as well. That is called “_deep cloning_”.
 - Or use the method `_.cloneDeep(obj)` from Lodash library in JS.
+
+### Object Methods
+
+> objects can have methods/functions to replicate real-life entities, or process object data.
+
+```javascript
+let user = {
+    name: "John",
+    age: 30
+};
+
+// method 1: function expression
+user.sayHi = function() {
+    alert("Hi!");
+};
+
+user.sayHi(); // Hello!
+
+// method 2: external function assignment
+function sayHello() {
+    alert("Hello!");
+};
+
+user.sayHello = sayHi;
+user.sayHello(); // Hello!
+
+// method 3: during obj declaration
+admin = {
+    sayHi: function() {
+        alert("Hi!");
+    }
+};
+
+// method 4: shorthand declaration
+admin = {
+    sayHi() { // same as "sayHi: function()"
+        alert("Hi!");
+    }
+};
+```
+
+### What is `this`?
+
+- use `this` to access the properties and methods inside the current method.
+- Preferrable approach, rather than using the outer variable which makes code less portable and reliable. 
+    - because copying the object to another variable will copy the properties and methods that may be using the outer var, which would eventually lead to errors.
+
+```js
+let user = {
+     name: "John"
+    ,age: 30
+
+    ,sayHi() {
+        alert(`Hi, ${this.name}!`);
+    }
+
+    ,sayHello() {
+        alert(`Hello, ${user.name}!`);
+    }    
+};
+
+let admin = user;
+user = null;    // kill reference from user,
+                // but admin still points to same obj
+                
+admin.sayHi();      // Hi, John!
+admin.sayHello();   // TypeError, user is null
+```
+- `this` is evaluated at runtime, depending on which function/object is being called.
 
 ---
 ---
