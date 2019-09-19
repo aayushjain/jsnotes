@@ -204,6 +204,65 @@ admin.sayHello();   // TypeError, user is null
 ```
 - `this` is evaluated at runtime, depending on which function/object is being called.
 
+
+### Object Constructors
+
+> to create similar objects with varying values/properties
+
+```javascript
+// constructor function
+function User(name) {
+    // this = {};     (implicitly)
+    // 1. empty object created on call
+
+    // add properties to this
+    // 2. func is exec
+    this.name = name;
+    this.isAdmin = false;
+
+    // return this;   (implicitly)
+    // 3. value of this(object) is returned
+    
+    this.sayHi = function() {
+        alert( "My name is: " + this.name );
+        };
+    // constructors can have their own methods too, 
+    // which is just another fancy way of saying that,
+    // functions can have functions.
+    // it is necessary for such funcs to use "this".
+}
+
+let user = new User("Jack");
+    /* same as..
+        let user = {
+        name: "Jack",
+        isAdmin: false
+        };
+    */
+
+alert(user.name); // Jack
+alert(user.isAdmin); // false
+
+```
+
+- constructors implement reusable object creation code
+    - thus, it is easy to create objects using `new User("Ann")`, `new User("John")`, or `new User("Bob")`.
+
+- always invoke constructors using `new`.
+- assignment that makes use of `new` always gets back an object
+- use `new.target` inside a function to check if it (function/construtor) was called with `new` or directly.
+```javascript
+alert(new.target);  // returns the function body
+                    // if call from constructor/fresh object
+                    // returns `undefined` for regular calls.
+```
+
+- no need to return data from constructor, `this` is the result.
+- if constructor definition has a `return` which is returning an object, then the object is returned instead of `this`.
+    - But if definition is returning a primitive, then it is ignored, and `this` is returned anyway.
+    - In case itis an empty return, even then `this` is returned.
+
+
 ---
 ---
 
