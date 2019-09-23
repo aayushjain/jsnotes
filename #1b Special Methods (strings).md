@@ -33,6 +33,7 @@ Function | Description
 `.repeat(n)` | repeats the string `n` times.
 
 Important Difference:
+
 | method                  | selects..                                   | negatives                |
 | ----------------------- | ------------------------------------------- | ------------------------ |
 | `slice(start, end)`     | from `start` to `end` (not including `end`) | allows negatives         |
