@@ -33,8 +33,8 @@ Function | Description
 `.repeat(n)` | repeats the string `n` times.
 
 Important Difference:
-method | selects.. | negatives |
- --- | --- | --- |
-`slice(start, end)` | from `start` to `end` (not including `end`) |  allows negatives
-`substring(start, end)` | between `start` and `end` | negative values mean `0`
-`substr(start, length)` | from `start` get `length` characters | allows negative `start`
+| method                  | selects..                                   | negatives                |
+| ----------------------- | ------------------------------------------- | ------------------------ |
+| `slice(start, end)`     | from `start` to `end` (not including `end`) | allows negatives         |
+| `substring(start, end)` | between `start` and `end`                   | negative values mean `0` |
+| `substr(start, length)` | from `start` get `length` characters        | allows negative `start`  |
