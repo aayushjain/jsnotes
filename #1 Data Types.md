@@ -28,6 +28,17 @@
 * `NaN` represents a computational error. It is a result of an incorrect or an undefined mathematical operation. It is sticky, ie **any further operation on `NaN` returns `NaN`**.
 
       alert( ("not a number" / 2) + 5 ); // NaN
+- also used to represent hexal, octal, binary and scintific numbers with appropriate suffix.
+```javascript
+alert( 0xff );      // 255
+let a = 0b11111111; // binary form of 255
+let b = 0o377;      // octal form of 255
+
+alert( a == b );    // true
+
+alert( 7.3e9 );     // 7.3 billion
+alert( 1.23e-6 )    // 0.00000123 (=1.23 / 1000000)
+```
 
 
 ### 2. Strings
@@ -68,6 +79,23 @@ print("But the preferred " +
 "browsers support + over \.")
 ```
 
+- to convert number to string, use `toString(base)`
+```js
+let num = 255;
+
+alert( num.toString(16) );  // ff       (base 16)
+alert( num.toString(2) );   // 11111111 (base 2 / bool)
+alert( 123456..toString(36) );  // 2n9c
+        // 2 dots for directly on a num, without var
+```
+
+- use \u to insert unicode symbols
+```js
+alert( "\u{1F60D}" ); // 😍 smiling face emoji
+```
+
+- Strings are immutable in JavaScript. It is impossible to change a character.
+
 ### 3. Booleans
 
 - can be `true` or `false`.
@@ -95,6 +123,8 @@ print("But the preferred " +
 ### 6. Objects
 
 - used to store collections of data and more complex entities.
+- are a collection of `key:value` pairs that form the object's 'properties'.
+
 
 ### 7. Symbols
 
